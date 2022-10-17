@@ -35,7 +35,7 @@ namespace MvcAssignment4.Controllers
         public IActionResult Index()
         {
             HttpContext.Session.SetString("listOfEntriesKey", string.Join(",", blogEntries));
-            return View();
+            return View() ;
         }
 
         public IActionResult Privacy()
@@ -49,15 +49,10 @@ namespace MvcAssignment4.Controllers
             return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
         }
 
-        // Adding method and a view 
-        public IActionResult postsWall()
+        public IActionResult BlogArticlesPartial()
         {
-            return View();
+           return PartialView("_BlogArticles", blogEntries);
         }
 
-        public IActionResult EntriesPartialViews()
-        {
-            return PartialView();
-        }
     }
 }

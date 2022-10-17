@@ -1,0 +1,13 @@
+﻿@model List<Entry>
+<div class="row">
+    @foreach (Entry entry in Model)
+    {
+            <div class="col-md-6">
+                <div>
+                    <strong>@entry.Category</strong>
+                    <h3>@entry.Title</h3>
+                    <p>@entry.Content</p>
+                </div>
+            </div>
+    }
+</div>
