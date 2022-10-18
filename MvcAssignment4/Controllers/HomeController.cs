@@ -1,14 +1,18 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using MvcAssignment4.Models;
 using System.Diagnostics;
+using System.ComponentModel.DataAnnotations;
+
 
 namespace MvcAssignment4.Controllers
 {
-    public class HomeController : Controller
+    namespace MvcAssignment4.Controllers
     {
-        private readonly ILogger<HomeController> _logger;
+        public class HomeController : Controller
+        {
+            private readonly ILogger<HomeController> _logger;
 
-        private static List<Entry> blogEntries = new List<Entry>()
+            private static List<Entry> blogEntries = new List<Entry>()
         {
             new Entry()
             {
@@ -27,32 +31,41 @@ namespace MvcAssignment4.Controllers
             }
         };
 
-        public HomeController(ILogger<HomeController> logger)
-        {
-            _logger = logger;
-        }
+            public HomeController(ILogger<HomeController> logger)
+            {
+                _logger = logger;
+            }
 
-        public IActionResult Index()
-        {
-            HttpContext.Session.SetString("listOfEntriesKey", string.Join(",", blogEntries));
-            return View() ;
-        }
+            public IActionResult Index()
+            {
+                
+                return View(blogEntries);
+            }
 
-        public IActionResult Privacy()
-        {
-            return View();
-        }
+            public IActionResult Privacy()
+            {
+                return View();
+            }
 
-        [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
-        public IActionResult Error()
-        {
-            return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
-        }
+            public IActionResult BlogArticls()
+            {
+                return View(blogEntries);
+            }
 
-        public IActionResult BlogArticlesPartial()
-        {
-           return PartialView("_BlogArticles", blogEntries);
-        }
+            public IActionResult BlogArticlesPartial()
+            {
+                return PartialView("_BlogArticles", blogEntries);
+            }
 
+
+            [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
+            public IActionResult Error()
+            {
+                return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
+            }
+
+           
+
+        }
     }
 }

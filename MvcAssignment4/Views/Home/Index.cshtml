@@ -1,4 +1,4 @@
-﻿
+﻿@model List<Entry>
 @{
     ViewData["Title"] = "Home Page";
 }
@@ -8,8 +8,9 @@
     <p>Welcome to my blog!</p>
 </div>
 
-<div id="partialZone">
 
+<div id="partialZone">
+    @*Here will the partial view be rendered*@
 </div>
 
 @section Scripts {

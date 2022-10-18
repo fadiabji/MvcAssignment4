@@ -1,6 +1,17 @@
 ﻿@{
-    ViewData["Title"] = "Privacy Policy";
+    ViewData["Title"] = "Partial view test";
 }
 <h1>@ViewData["Title"]</h1>
 
-<p>Use this page to detail your site's privacy policy.</p>
+<p>Partial view is rendering here as well.</p>
+
+
+<div id="partialZone">
+    @*Here will the partial view be rendered*@
+</div>
+
+@section Scripts {
+    <script>
+                $('#partialZone').load("/Home/BlogArticlesPartial")
+    </script>
+}
